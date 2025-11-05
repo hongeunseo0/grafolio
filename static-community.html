@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>크리에이티브 플랫폼 - 커뮤니티</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Top Navigation -->
+    <header class="fixed top-0 left-0 right-0 bg-white border-b border-gray-100 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="https://static.readdy.ai/image/f60abcf09db3aff2007405d721dad765/995027753dcedd7587796507707f4e5f.png" alt="Logo" class="h-8 w-auto">
+                </div>
+
+                <!-- Search Bar -->
+                <div class="flex-1 max-w-2xl mx-8">
+                    <div class="relative">
+                        <input type="text" placeholder="작품, 크리에이터를 검색해보세요" class="w-full px-4 py-2 pl-10 pr-4 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-[#00B67E] focus:border-transparent">
+                        <i class="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"></i>
+                    </div>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button onclick="toggleUploadDropdown()" class="px-4 py-2 bg-[#00B67E] text-white rounded-full hover:bg-[#00a06f] transition-colors duration-200 font-medium cursor-pointer whitespace-nowrap">
+                            업로드
+                        </button>
+                        
+                        <!-- Upload Dropdown -->
+                        <div id="uploadDropdown" class="hidden absolute top-full right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                            <a href="static-upload.html" class="w-full px-4 py-3 text-left text-gray-700 hover:bg-gray-50 transition-colors duration-200 cursor-pointer whitespace-nowrap border-b border-gray-100 flex items-center">
+                                <i class="ri-folder-upload-line text-[#00B67E] mr-3 w-4 h-4 flex items-center justify-center"></i>
+                                프로젝트 업로드
+                            </a>
+                            <button class="w-full px-4 py-3 text-left text-gray-700 hover:bg-gray-50 transition-colors duration-200 cursor-pointer whitespace-nowrap flex items-center">
+                                <i class="ri-shopping-bag-line text-[#00B67E] mr-3 w-4 h-4 flex items-center justify-center"></i>
+                                판매 콘텐츠 등록
+                            </button>
+                        </div>
+                    </div>
+                    <button class="p-2 text-gray-600 hover:text-gray-800 transition-colors duration-200 cursor-pointer">
+                        <i class="ri-notification-line text-xl"></i>
+                    </button>
+                    <button class="w-8 h-8 bg-gray-300 rounded-full hover:bg-gray-400 transition-colors duration-200 cursor-pointer"></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Header Menu -->
+    <div class="fixed top-16 left-0 right-0 bg-white border-b border-gray-100 z-40">
+        <div class="max-w-7xl mx-auto px-6">
+            <nav class="flex space-x-12 py-4">
+                <a href="static-home.html" class="text-lg transition-colors duration-200 cursor-pointer whitespace-nowrap text-gray-600 hover:text-gray-800 pb-2 font-medium">프로젝트</a>
+                <a href="static-community.html" class="text-lg transition-colors duration-200 cursor-pointer whitespace-nowrap text-[#00b57f] border-b-2 border-[#00b57f] pb-2 font-bold">커뮤니티</a>
+                <a href="#" class="text-lg transition-colors duration-200 cursor-pointer whitespace-nowrap text-gray-600 hover:text-gray-800 pb-2 font-medium">배경화면</a>
+                <a href="#" class="text-lg transition-colors duration-200 cursor-pointer whitespace-nowrap text-gray-600 hover:text-gray-800 pb-2 font-medium">크리에이터</a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="flex max-w-7xl mx-auto pt-32">
+        <!-- Left Sidebar - Fixed -->
+        <div class="w-64 fixed left-0 top-32 h-[calc(100vh-8rem)] bg-white border-r border-gray-200 overflow-y-auto z-30">
+            <div class="p-6">
+                <!-- Profile Section -->
+                <div class="flex items-center space-x-3 mb-6">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20young%20korean%20creative%20person%2C%20friendly%20smile%2C%20modern%20aesthetic%2C%20clean%20background&width=48&height=48&seq=profile-user&orientation=squarish" alt="프로필" class="w-12 h-12 rounded-full">
+                    <div>
+                        <h3 class="font-semibold text-gray-800">김크리에이터</h3>
+                        <p class="text-sm text-gray-500">@kimcreator</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Menu -->
+                <nav class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <i class="ri-home-line w-5 h-5 flex items-center justify-center"></i>
+                        <span>홈</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <i class="ri-compass-line w-5 h-5 flex items-center justify-center"></i>
+                        <span>탐색</span>
+                    </a>
+                    <a href="static-moodboard.html" class="flex items-center space-x-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <i class="ri-layout-grid-line w-5 h-5 flex items-center justify-center"></i>
+                        <span>무드보드</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <i class="ri-bookmark-line w-5 h-5 flex items-center justify-center"></i>
+                        <span>저장됨</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+                        <i class="ri-user-line w-5 h-5 flex items-center justify-center"></i>
+                        <span>프로필</span>
+                    </a>
+                </nav>
+
+                <!-- Trending Topics -->
+                <div class="mt-8">
+                    <h4 class="font-semibold text-gray-800 mb-4">인기 토픽</h4>
+                    <div class="space-y-2">
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">#디지털아트</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">#일러스트</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">#UI디자인</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">#사진</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition-colors duration-200">#3D모델링</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 mr-80 px-6 py-6">
+            <!-- Post Composer -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                <div class="flex items-start space-x-3">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20young%20korean%20creative%20person%2C%20friendly%20smile%2C%20modern%20aesthetic%2C%20clean%20background&width=40&height=40&seq=profile-user&orientation=squarish" alt="프로필" class="w-10 h-10 rounded-full">
+                    <div class="flex-1">
+                        <button onclick="openNewPostModal()" class="w-full text-left px-4 py-3 bg-gray-50 text-gray-500 rounded-lg hover:bg-gray-100 transition-colors duration-200 cursor-pointer">
+                            무엇을 공유하고 싶나요?
+                        </button>
+                        <div class="flex items-center justify-between mt-3">
+                            <div class="flex items-center space-x-4">
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-[#00B67E] transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-image-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">이미지</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-[#00B67E] transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-video-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">동영상</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-[#00B67E] transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-hashtag w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">태그</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feed Posts -->
+            <div class="space-y-6">
+                <!-- Post 1 -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20young%20korean%20digital%20artist%2C%20creative%20workspace%2C%20modern%20aesthetic&width=40&height=40&seq=post-author1&orientation=squarish" alt="작성자" class="w-10 h-10 rounded-full">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-semibold text-gray-800">박디지털아티스트</h4>
+                                    <span class="text-sm text-gray-500">@parkdigital</span>
+                                </div>
+                                <p class="text-sm text-gray-500">2시간 전</p>
+                            </div>
+                            <button class="p-2 text-gray-400 hover:text-gray-600 transition-colors duration-200 cursor-pointer">
+                                <i class="ri-more-line w-5 h-5 flex items-center justify-center"></i>
+                            </button>
+                        </div>
+                        
+                        <p class="text-gray-800 mb-4">새로운 캐릭터 디자인 작업을 완성했습니다! 피드백 환영합니다 ✨</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">#캐릭터디자인</span>
+                            <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">#일러스트</span>
+                            <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full">#디지털아트</span>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-1">
+                        <img src="https://readdy.ai/api/search-image?query=beautiful%20character%20design%20illustration%2C%20anime%20style%2C%20colorful%20artwork%2C%20professional%20character%20concept%20art&width=400&height=300&seq=post-image1&orientation=landscape" alt="작품 이미지" class="w-full h-48 object-cover object-top">
+                        <img src="https://readdy.ai/api/search-image?query=character%20design%20sketches%2C%20concept%20art%20development%2C%20creative%20process%2C%20professional%20illustration%20work&width=400&height=300&seq=post-image2&orientation=landscape" alt="작품 이미지" class="w-full h-48 object-cover object-top">
+                    </div>
+                    
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-6">
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-red-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-heart-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">124</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-chat-3-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">18</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-green-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-share-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">7</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-600 hover:text-yellow-500 transition-colors duration-200 cursor-pointer">
+                                <i class="ri-bookmark-line w-5 h-5 flex items-center justify-center"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 2 -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20young%20korean%20photographer%2C%20camera%20equipment%2C%20creative%20studio&width=40&height=40&seq=post-author2&orientation=squarish" alt="작성자" class="w-10 h-10 rounded-full">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-semibold text-gray-800">이포토그래퍼</h4>
+                                    <span class="text-sm text-gray-500">@leephoto</span>
+                                </div>
+                                <p class="text-sm text-gray-500">4시간 전</p>
+                            </div>
+                            <button class="p-2 text-gray-400 hover:text-gray-600 transition-colors duration-200 cursor-pointer">
+                                <i class="ri-more-line w-5 h-5 flex items-center justify-center"></i>
+                            </button>
+                        </div>
+                        
+                        <p class="text-gray-800 mb-4">오늘 아침 한강에서 찍은 일출 사진입니다. 자연의 아름다움에 감탄했어요 🌅</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs rounded-full">#사진</span>
+                            <span class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">#일출</span>
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">#한강</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://readdy.ai/api/search-image?query=beautiful%20sunrise%20photography%20over%20Han%20River%20Seoul%2C%20golden%20hour%20lighting%2C%20peaceful%20morning%20scene%2C%20professional%20landscape%20photography&width=600&height=400&seq=post-sunrise&orientation=landscape" alt="일출 사진" class="w-full h-64 object-cover object-top">
+                    
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-6">
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-red-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-heart-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">89</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-chat-3-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">12</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-green-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-share-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">5</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-600 hover:text-yellow-500 transition-colors duration-200 cursor-pointer">
+                                <i class="ri-bookmark-line w-5 h-5 flex items-center justify-center"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post 3 -->
+                <div class="bg-white border border-gray-200 rounded-lg overflow-hidden">
+                    <div class="p-4">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20young%20korean%20UI%20UX%20designer%2C%20modern%20workspace%2C%20creative%20environment&width=40&height=40&seq=post-author3&orientation=squarish" alt="작성자" class="w-10 h-10 rounded-full">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2">
+                                    <h4 class="font-semibold text-gray-800">최UI디자이너</h4>
+                                    <span class="text-sm text-gray-500">@choiui</span>
+                                </div>
+                                <p class="text-sm text-gray-500">6시간 전</p>
+                            </div>
+                            <button class="p-2 text-gray-400 hover:text-gray-600 transition-colors duration-200 cursor-pointer">
+                                <i class="ri-more-line w-5 h-5 flex items-center justify-center"></i>
+                            </button>
+                        </div>
+                        
+                        <p class="text-gray-800 mb-4">모바일 앱 리디자인 프로젝트를 진행 중입니다. 사용자 경험을 개선하는 것이 목표예요!</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs rounded-full">#UI디자인</span>
+                            <span class="px-2 py-1 bg-pink-100 text-pink-700 text-xs rounded-full">#UX</span>
+                            <span class="px-2 py-1 bg-teal-100 text-teal-700 text-xs rounded-full">#모바일앱</span>
+                        </div>
+                    </div>
+                    
+                    <img src="https://readdy.ai/api/search-image?query=modern%20mobile%20app%20UI%20design%20mockup%2C%20clean%20interface%2C%20professional%20app%20design%2C%20user%20experience%20focused&width=600&height=400&seq=post-ui-design&orientation=landscape" alt="UI 디자인" class="w-full h-64 object-cover object-top">
+                    
+                    <div class="p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-6">
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-red-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-heart-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">156</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-blue-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-chat-3-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">23</span>
+                                </button>
+                                <button class="flex items-center space-x-2 text-gray-600 hover:text-green-500 transition-colors duration-200 cursor-pointer">
+                                    <i class="ri-share-line w-5 h-5 flex items-center justify-center"></i>
+                                    <span class="text-sm">11</span>
+                                </button>
+                            </div>
+                            <button class="text-gray-600 hover:text-yellow-500 transition-colors duration-200 cursor-pointer">
+                                <i class="ri-bookmark-line w-5 h-5 flex items-center justify-center"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar - Fixed -->
+        <div class="w-80 fixed right-0 top-32 h-[calc(100vh-8rem)] bg-white border-l border-gray-200 overflow-y-auto z-30">
+            <div class="p-6">
+                <!-- Trending Now -->
+                <div class="mb-6">
+                    <h3 class="font-semibold text-gray-800 mb-4">지금 인기</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer">
+                            <img src="https://readdy.ai/api/search-image?query=trending%20digital%20art%20piece%2C%20popular%20creative%20work%2C%20modern%20artistic%20design&width=48&height=48&seq=trending1&orientation=squarish" alt="인기 작품" class="w-12 h-12 rounded-lg object-cover object-top">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-gray-800">AI 아트 챌린지</p>
+                                <p class="text-xs text-gray-500">1.2k 참여</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer">
+                            <img src="https://readdy.ai/api/search-image?query=popular%20design%20trend%2C%20creative%20inspiration%2C%20modern%20visual%20design&width=48&height=48&seq=trending2&orientation=squarish" alt="인기 작품" class="w-12 h-12 rounded-lg object-cover object-top">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-gray-800">미니멀 디자인 트렌드</p>
+                                <p class="text-xs text-gray-500">856 좋아요</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 hover:bg-gray-50 rounded-lg transition-colors duration-200 cursor-pointer">
+                            <img src="https://readdy.ai/api/search-image?query=creative%20photography%20trend%2C%20artistic%20photo%20composition%2C%20professional%20photography&width=48&height=48&seq=trending3&orientation=squarish" alt="인기 작품" class="w-12 h-12 rounded-lg object-cover object-top">
+                            <div class="flex-1">
+                                <p class="text-sm font-medium text-gray-800">스트리트 포토그래피</p>
+                                <p class="text-xs text-gray-500">634 공유</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suggested Users -->
+                <div class="mb-6">
+                    <h3 class="font-semibold text-gray-800 mb-4">추천 크리에이터</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20korean%20creative%20artist%2C%20friendly%20expression%2C%20modern%20aesthetic&width=40&height=40&seq=suggested1&orientation=squarish" alt="추천 사용자" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">김일러스트</p>
+                                    <p class="text-xs text-gray-500">@kimillust</p>
+                                </div>
+                            </div>
+                            <button class="px-3 py-1 bg-[#00B67E] text-white text-xs rounded-full hover:bg-[#00a06f] transition-colors duration-200 cursor-pointer whitespace-nowrap">
+                                팔로우
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20korean%20graphic%20designer%2C%20creative%20workspace%2C%20modern%20style&width=40&height=40&seq=suggested2&orientation=squarish" alt="추천 사용자" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">박그래픽</p>
+                                    <p class="text-xs text-gray-500">@parkgraphic</p>
+                                </div>
+                            </div>
+                            <button class="px-3 py-1 bg-[#00B67E] text-white text-xs rounded-full hover:bg-[#00a06f] transition-colors duration-200 cursor-pointer whitespace-nowrap">
+                                팔로우
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20korean%20photographer%2C%20camera%20gear%2C%20artistic%20environment&width=40&height=40&seq=suggested3&orientation=squarish" alt="추천 사용자" class="w-10 h-10 rounded-full">
+                                <div>
+                                    <p class="text-sm font-medium text-gray-800">정사진작가</p>
+                                    <p class="text-xs text-gray-500">@jungphoto</p>
+                                </div>
+                            </div>
+                            <button class="px-3 py-1 bg-[#00B67E] text-white text-xs rounded-full hover:bg-[#00a06f] transition-colors duration-200 cursor-pointer whitespace-nowrap">
+                                팔로우
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events -->
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4">이벤트</h3>
+                    <div class="bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg p-4">
+                        <h4 class="font-medium text-gray-800 mb-2">크리에이티브 콘테스트</h4>
+                        <p class="text-sm text-gray-600 mb-3">상금 100만원의 디자인 공모전에 참여하세요!</p>
+                        <button class="w-full py-2 bg-purple-600 text-white text-sm rounded-lg hover:bg-purple-700 transition-colors duration-200 cursor-pointer whitespace-nowrap">
+                            자세히 보기
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Post Modal -->
+    <div id="newPostModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg w-full max-w-lg mx-4">
+            <div class="flex items-center justify-between p-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-800">새 게시물 작성</h3>
+                <button onclick="closeNewPostModal()" class="text-gray-400 hover:text-gray-600 transition-colors duration-200 cursor-pointer">
+                    <i class="ri-close-line text-xl w-6 h-6 flex items-center justify-center"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="flex items-start space-x-3 mb-4">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20portrait%20of%20young%20korean%20creative%20person%2C%20friendly%20smile%2C%20modern%20aesthetic%2C%20clean%20background&width=40&height=40&seq=profile-user&orientation=squarish" alt="프로필" class="w-10 h-10 rounded-full">
+                    <div class="flex-1">
+                        <textarea placeholder="무엇을 공유하고 싶나요?" class="w-full p-3 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-[#00B67E] focus:border-transparent" rows="4"></textarea>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-4">
+                        <button class="flex items-center space-x-2 text-gray-600 hover:text-[#00B67E] transition-colors duration-200 cursor-pointer">
+                            <i class="ri-image-line w-5 h-5 flex items-center justify-center"></i>
+                            <span class="text-sm">이미지</span>
+                        </button>
+                        <button class="flex items-center space-x-2 text-gray-600 hover:text-[#00B67E] transition-colors duration-200 cursor-pointer">
+                            <i class="ri-hashtag w-5 h-5 flex items-center justify-center"></i>
+                            <span class="text-sm">태그</span>
+                        </button>
+                    </div>
+                    <button class="px-6 py-2 bg-[#00B67E] text-white rounded-lg hover:bg-[#00a06f] transition-colors duration-200 cursor-pointer whitespace-nowrap">
+                        게시
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleUploadDropdown() {
+            const dropdown = document.getElementById('uploadDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        function openNewPostModal() {
+            document.getElementById('newPostModal').classList.remove('hidden');
+        }
+
+        function closeNewPostModal() {
+            document.getElementById('newPostModal').classList.add('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('uploadDropdown');
+            const button = event.target.closest('button');
+            
+            if (!button || !button.onclick || button.onclick.toString().indexOf('toggleUploadDropdown') === -1) {
+                dropdown.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
